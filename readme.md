@@ -6,7 +6,7 @@
 - Exploratory Analysis
 - Analysis of Qualifiers Maps and Rounds Survived
 - Skillbanning Process
-- Possible Extensions to Ranked Maps
+- Possible Extensions to Ranked Maps and other tournaments
 
 ## About
 
