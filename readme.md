@@ -201,10 +201,10 @@ We then consider the previous definition of outliers. Which is "the players who 
 We then consider the **Local Outlier Factor** algorithm. In order to get the Local Outlier Factor of a given data point $A$. We started by setting the number of nearest neighbors $k$ and compute the **Reachability Distance** 
 
 $$
-\text{rd}_k(A,B)=\max\{\text{k\_distance}(B), d(A,B)\}
+\text{rd}_k(A,B)=\max\{\text{k-distance}(B), d(A,B)\}
 $$
 
-Where $\text{k\_distance}(B)$ is the distance from the point $B$ to its $k$-th nearest neighbors.
+Where $\text{k-distance}(B)$ is the distance from the point $B$ to its $k$-th nearest neighbors.
 
 We then define the **Local Reachability Density** as the following formula
 
