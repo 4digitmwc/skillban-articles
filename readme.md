@@ -260,11 +260,27 @@ This model will address the case of players who doesn't have any history in majo
 
 In this study, we used the data of players with global rank 1-10000, including scores and player statistics and recalculate into the approximate 4k rank. Which the calculation procedure can be found in [osu!wiki](https://osu.ppy.sh/wiki/en/Performance_points). Then we will use this information in our procedure. We selected the specific beatmaps to perform the outlier detection procedure (note: the selected beatmaps in this study are omitted). Then perform the calculation
 
-### Model Architecture
+### Candidates Selection
 
-We then again use the ETI model with the adjustment of data imputation to be **median** instead of minimum to transfrom scores into average performance of each beatmap category. Then select the candidates using KNN Imputation for validating the missing data and Logistic Regression to classify the players between players with 4k rank of 1-999 and 1000-10000. We obtain the False-Positive outputs from the Logistic Regression as the candidates, then perform the Min-Max Scaler and Adjusted Local Outlier Factor in order to obtain the outliers.
+Because of the large amount of data points and it is difficult to determine just the outliers among all ten thousand players, we decide to select the candidates to perform the outlier detection by putting all the players into the classification model which will classify between 4 digits and higher than 4 digits. Which has the parameters of ETI from the ETI model. However the missing data will be validated by the algorithm of **K-Nearest Neighbors**. Next, we will classify the players using **Logistic Regression** and gather the players who are 4 digits, but classified as higher than 4 digits according to the model. The gathered players are considered as the candidates for the skillbans process which will be elaborated next.
 
-However, there might be some missing outliers which the Outlier Detection Algorithm is unable to detect. We then compare the outliers with the probability predictions from Logistic Regression, then include the players who have the higher prediction value than the minimum prediction value of the outliers from the Local Outlier Factor algorithm. Hence, we finally obtained the list of outliers.
+### Outlier Detection using One-Class Support Vector Machine
+
+### Support Vector Machine
+
+**Support Vector Machine** is an algorithm for Machine Learning which is used for mainly in classification tasks. The main idea is to draw the region that will distinguish between two classes. In this study, we decide to use the linear plane
+
+$$
+f(\textbf{x}) = w^T\textbf{x} + b
+$$
+
+The decision function works like Logistic Regression. It depends on the sign of the decision function. But the fitting method works different than the Logistic Regression. Its procedure relies on using the knowledge of **geometry** and **similarity** among the data points in one class meanwhile the Logistic Regression relies on the Likelihood of **Binomial Distribution**.
+
+Disclaimer that the author (IndexError) still has no prior knowledge about this and how to interpret and derive them, so this is a brief idea on how the SVM works.
+
+### One-Class SVM
+
+**One-Class SVM** is an unsupervised category of Support Vector Machines to determine whether a data point is an outlier by assigning all data into one class and find the decision function to distinguish between the normal data point and the outlier. In this study, the function to determine the outlier is the linear plane. As we have classified the candidates for the skillbans, it is reasonable set the algorithm to detect half of the data points to be the outliers and the rest as the normal data points. The region that has the higher score will be considered as outliers. Or in mathematical words, $f(\textbf{x}) > 0$. This will determine us the outliers for the candidates we got from ranked and loved mapsets.
 
 ## Model Performance
 
@@ -318,3 +334,5 @@ $$
 - Clustering using sum-of-norms regularization: With application to particle filter output computation - [link](https://ieeexplore.ieee.org/document/5967659)
 - sklearn.neighbors.LocalOutlierFactor - [link](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html)
 - sklearn.linear_model.LogisticRegression - [link](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
+- sklearn.svm.OneClassSVM - [link](https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html)
+- The Elements of Statistical Learning - [link](https://hastie.su.domains/ElemStatLearn/)
