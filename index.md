@@ -296,6 +296,10 @@ Disclaimer that the author (IndexError) still has no prior knowledge about this 
 
 **One-Class SVM** is an unsupervised category of Support Vector Machines to determine whether a data point is an outlier by assigning all data into one class and find the decision function to distinguish between the normal data point and the outlier. In this study, the function to determine the outlier is the linear plane. As we have classified the candidates for the skillbans, it is reasonable to set the algorithm to detect half of the data points to be the outliers and the rest as the normal data points (penalty). The region that has the higher score will be considered as outliers. Or in mathematical words, $f(\textbf{x}) > 0$. This will determine us the outliers for the candidates we got from ranked and loved mapsets.
 
+### In Layman Terms
+
+For the skillbans of the players in the leaderboard system, we started with the same procedure by selecting the candidates using the Logistic Regression to classify the players between 4 Digits and higher than 4 Digits using the feature of ETI. Then we select those candidates to perform the outlier detection using the algorithm to find the cutoff for the skillbans of the players by dividing the player list into the lower half and upper half, which the upper half players will be skillbanned.
+
 ## Model Performance
 
 After the model is constructed, the next thing is to test the Model with user input in samples to determine whether the model will yield the low false predictions rate. Namely model should at least agree (partially) with the user inputs.
@@ -347,6 +351,8 @@ $$
 
 The list of skillbans are provided [here](https://docs.google.com/spreadsheets/d/1udZFfvt3it7Hk_k4J89k-UMzY1gfELaBN_oxw53CUOA/edit#gid=757705500)
 
+This list of players shown on the sheet is subject to change until the second week of December 2022. Any player appearing on this list may not sign for 4DM2023, however there will be an appeal system. If you are shown as TRUE on both the ranked and tournament columns on this spreadsheet, you may not appeal your restriction to sign. However if you are only TRUE for one or the other, you may message Logan636#7606 with a request to appeal your restriction and a council of tournament staff will deliberate and decide if you should be banned or not. If you have any further questions, please state them in the questions channel of our discord!
+
 ## Related Works
 
 - Clustering using sum-of-norms regularization: With application to particle filter output computation - [link](https://ieeexplore.ieee.org/document/5967659)
@@ -369,7 +375,7 @@ Thank you Paturages for also providing some important and useful information, fe
 
 Thank you tester team, actually I will list the names, Mikuaimbot, DemiFiendSMT, Silhoueska Elze, LeMarcinho, Paturages and DannyPX for volunteering in this project, you all are a part of giving feedback and improve the model further. Without you all we would be really concerned if the model is reliable. Huge credits to you all <3.
 
-Poly, there is a lot to cover for you here haha. Thank you so much for joining me in this big project. I believe this project wouldn't be possible without a head start from you. Thank you for the Exploratory Data Analysis at the beginning and thank you for the feedback in the initial model as well. Thank you for writing the introduction, the most important part of this project article. I saw you putting a lot of effort into writing this and I appreciated it a lot. Next, I've seen your improvement in writing code a lot since I asked you to write data fetching for 4 Digit MWC 3 until you wrote another one for MWC2021 and 2022. I am so happy for your will to learn and try to perform your best in this project. I hope you have fun in this project and I hope that in the future, we will get to collaborate each other again. You are the best.
+Poly, there is a lot to cover for you here haha. Thank you so much for joining me in this big project. I believe this project wouldn't be possible without a head start from you. Thank you for the Exploratory Data Analysis at the beginning and thank you for the feedback in the initial model as well. Thank you for writing the introduction, the most important part of this project article. I saw you putting a lot of effort into writing this and I appreciated it a lot. Next, I've seen your improvement in writing code a lot since I asked you to write data fetching for 4 Digit MWC 3 until you wrote another one for MWC2021 and 2022. I am so happy for your will to learn and try to perform your best in this project. I hope you have fun in this project and I hope that in the future, we will get to collaborate each other again. Continue improving yourself, You are the best.
 
 ## Last Note for the readers
 
