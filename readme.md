@@ -2,6 +2,8 @@
 
 Authors: IndexError, Polytetral
 
+PDF: [here](https://cdn.discordapp.com/attachments/988928605998432256/1038659668949618698/skillbans.pdf)
+
 ## Introduction
 
 ### Background and Importance
