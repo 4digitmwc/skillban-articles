@@ -343,6 +343,10 @@ $$
 
 **F1-Score** will determine how much the model agrees with the user predictions, this will be really useful for the imbalanced classification or outlier detection task like this one specifically.
 
+## Skillbans List
+
+The list of skillbans are provided [here](https://docs.google.com/spreadsheets/d/1udZFfvt3it7Hk_k4J89k-UMzY1gfELaBN_oxw53CUOA/edit#gid=757705500)
+
 ## Related Works
 
 - Clustering using sum-of-norms regularization: With application to particle filter output computation - [link](https://ieeexplore.ieee.org/document/5967659)
